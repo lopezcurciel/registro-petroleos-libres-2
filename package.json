@@ -1,4 +1,4 @@
-JSON{
+{
   "name": "registro-petroleos-libres",
   "version": "1.0.0",
   "private": true,
@@ -14,9 +14,9 @@ JSON{
     "react-signature-canvas": "^1.0.6"
   },
   "devDependencies": {
-    "@types/node": "20",
-    "@types/react": "18",
-    "@types/react-dom": "18",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "typescript": "^5"
   }
 }
