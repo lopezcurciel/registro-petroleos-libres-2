@@ -5,9 +5,9 @@ export default function Home() {
   const [form, setForm] = useState({
     name: '', dni: '', email: '', phone: '', plates: '', billing: '', acepta: false
   });
-  const sigRef = useRef<any>();
+  const sigRef = useRef<any>(null);
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.acepta || sigRef.current?.isEmpty()) {
       alert('Debes firmar y aceptar la política de protección de datos');
@@ -56,7 +56,7 @@ export default function Home() {
 
           <div className="bg-zinc-900 rounded-3xl p-8 border-2 border-zinc-700">
             <p className="text-2xl mb-6 text-center">Firma digital</p>
-            <SignatureCanvas ref={sigRef} canvasProps={{className: 'bg-black border-2 border-white rounded-2xl w-full h-80'}} />
+            <SignatureCanvas ref={sigRef} canvasProps={{ className: 'bg-black border-2 border-white rounded-2xl w-full h-80' }} />
             <button type="button" onClick={() => sigRef.current?.clear()} className="mt-6 w-full py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-xl font-semibold transition">
               Borrar firma
             </button>
