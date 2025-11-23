@@ -29,18 +29,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
       <div className="w-full max-w-4xl">
+
         <div className="text-center mb-12">
           <h1 className="text-6xl font-bold tracking-tight">Petroleos Libres</h1>
           <p className="text-2xl mt-4 opacity-80">Registro rápido para facturación</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
+
           <input required placeholder="Nombre o Razón Social" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, name: e.target.value})} />
+
           <input required placeholder="DNI / CIF" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, dni: e.target.value})} />
+
           <input required type="email" placeholder="Email" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, email: e.target.value})} />
+
           <input required placeholder="Teléfono" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, phone: e.target.value})} />
+
           <textarea placeholder="Matrículas (una por línea)" rows={4} className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition resize-none" onChange={e => setForm({...form, plates: e.target.value})} />
-          
+
           <select required className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, billing: e.target.value})}>
             <option value="">Tipo de facturación</option>
             <option>Diaria</option>
@@ -65,6 +71,7 @@ export default function Home() {
           <button type="submit" className="w-full py-8 bg-white text-black text-4xl font-bold rounded-3xl hover:bg-gray-200 transition shadow-2xl">
             ENVIAR Y FIRMAR
           </button>
+
         </form>
       </div>
     </div>
