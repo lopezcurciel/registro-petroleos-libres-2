@@ -23,28 +23,34 @@ export default function Home() {
     });
 
     if (res.ok) {
-      alert('¡Registro enviado! Revisa tu email.');
+      alert('¡Registro enviado correctamente!');
       sigRef.current?.clear();
       setForm({ name: '', dni: '', email: '', phone: '', plates: '', billing: '', acepta: false });
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Petroleos Libres S.L.</h1>
-          <p className="text-gray-600 mt-2">Registro para facturación</p>
+    <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
+      <div className="w-full max-w-4xl">
+        {/* Logo y título */}
+        <div className="text-center mb-12">
+          <h1 className="text-6xl font-bold tracking-tight">Petroleos Libres</h1>
+          <p className="text-2xl mt-4 opacity-80">Registro rápido para facturación</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <input required placeholder="Nombre o Razón Social" className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent" onChange={e => setForm({...form, name: e.target.value})} />
-          <input required placeholder="DNI / CIF" className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" onChange={e => setForm({...form, dni: e.target.value})} />
-          <input required type="email" placeholder="Email" className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" onChange={e => setForm({...form, email: e.target.value})} />
-          <input required placeholder="Teléfono" className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" onChange={e => setForm({...form, phone: e.target.value})} />
-          <textarea placeholder="Matrículas (una por línea)" rows={3} className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" onChange={e => setForm({...form, plates: e.target.value})} />
+        <form onSubmit={handleSubmit} className="space-y-8">
 
-          <select required className="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500" onChange={e => setForm({...form, billing: e.target.value})}>
+          <input required placeholder="Nombre o Razón Social" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, name: e.target.value})} />
+
+          <input required placeholder="DNI / CIF" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, dni: e.target.value})} />
+
+          <input required type="email" placeholder="Email" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, email: e.target.value})} />
+
+          <input required placeholder="Teléfono" className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, phone: e.target.value})} />
+
+          <textarea placeholder="Matrículas (una por línea)" rows={4} className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition resize-none" onChange={e => setForm({...form, plates: e.target.value})} />
+
+          <select required className="w-full p-6 text-2xl rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-white transition" onChange={e => setForm({...form, billing: e.target.value})}>
             <option value="">Tipo de facturación</option>
             <option>Diaria</option>
             <option>Semanal</option>
@@ -52,22 +58,12 @@ export default function Home() {
             <option>Mensual</option>
           </select>
 
-          <label className="flex items-start gap-3">
-            <input type="checkbox" required className="mt-1" onChange={e => setForm({...form, acepta: e.target.checked})} />
-            <span className="text-sm text-gray-700">Acepto la <a href="/politica" className="text-blue-600 underline">Política de Protección de Datos</a> (obligatorio)</span>
+          <label className="flex items-center gap-6 text-xl">
+            <input type="checkbox" required className="w-8 h-8" onChange={e => setForm({...form, acepta: e.target.checked})} />
+            <span>Acepto la <a href="#" className="underline">Política de Protección de Datos</a></span>
           </label>
 
-          <div className="border-2 border-gray-300 rounded-xl p-4 bg-white">
-            <p className="text-sm font-medium mb-2">Firma aquí con el dedo:</p>
-            <SignatureCanvas ref={sigRef} canvasProps={{className: 'border border-gray-400 rounded-lg w-full h-48 bg-white'}} />
-            <button type="button" onClick={() => sigRef.current?.clear()} className="text-sm text-blue-600 mt-2">Borrar firma</button>
-          </div>
-
-          <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-xl text-lg transition">
-            Enviar y Firmar
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
+          <div className="bg-zinc-900 rounded-3xl p-8 border-2 border-zinc-700">
+            <p className="text-2xl mb-6 text-center">Firma digital</p>
+            <SignatureCanvas ref={sigRef} canvasProps={{className: 'bg-black border-2 border-white rounded-2xl w-full h-80'}} />
+            <button type="button" onClick={() => sigRef.current?.clear()} className="mt-6 w-full py-5 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-xl font-semibold transition">
